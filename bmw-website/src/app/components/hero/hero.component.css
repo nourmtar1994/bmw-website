@@ -1,0 +1,32 @@
+/* src/app/components/hero/hero.component.css */
+.hero-section {
+  height: 90vh; /* Prend presque tout l'écran */
+  /* Ici la magie : 
+     1. On met un dégradé noir (0.7) vers transparent (0.3) 
+     2. On charge votre image locale
+  */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url("/assets/images/hero.jpg") center/cover no-repeat;
+
+  position: relative;
+}
+
+/* Une petite animation d'entrée */
+.fade-in-up {
+  animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spacing-2 {
+  letter-spacing: 2px;
+}

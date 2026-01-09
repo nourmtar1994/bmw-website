@@ -1,0 +1,41 @@
+<section
+  id="innovation"
+  class="py-5 bg-dark text-white position-relative overflow-hidden"
+>
+  <div
+    class="position-absolute top-0 start-0 w-100 h-100 opacity-25"
+    style="
+      background: radial-gradient(
+        circle at top right,
+        #0066b1,
+        transparent 40%
+      );
+      pointer-events: none;
+    "
+  ></div>
+
+  <div class="container position-relative z-1">
+    <div class="row mb-5 text-center">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="display-5 fw-bold mb-3">L'Innovation au Cœur</h2>
+        <p class="lead text-white-50">
+          Redéfinir les standards de la mobilité premium.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let item of features">
+        <div
+          class="p-4 border border-secondary rounded-3 h-100 hover-glow bg-gradient-dark"
+        >
+          <div class="mb-3 text-primary">
+            <i class="bi {{ item.icon }}" style="font-size: 3rem"></i>
+          </div>
+          <h4 class="fw-bold">{{ item.title }}</h4>
+          <p class="text-white-50">{{ item.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

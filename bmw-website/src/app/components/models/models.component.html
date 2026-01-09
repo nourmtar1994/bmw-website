@@ -1,0 +1,41 @@
+<section id="modeles" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Nos Modèles Phares</h2>
+      <p class="text-muted">Choisissez votre style de conduite</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let car of cars">
+        <div class="card h-100 border-0 shadow-sm hover-effect">
+          <img
+            [src]="car.image"
+            class="card-img-top"
+            [alt]="car.name"
+            style="height: 250px; object-fit: cover"
+          />
+
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title fw-bold mb-0">{{ car.name }}</h5>
+              <span class="badge bg-dark">{{ car.engine }}</span>
+            </div>
+            <p class="card-text text-muted">{{ car.description }}</p>
+            <h6 class="text-primary fw-bold mb-3">
+              À partir de {{ car.price }}
+            </h6>
+          </div>
+
+          <div class="card-footer bg-white border-0 pb-3">
+            <button
+              (click)="reserverEssai(car.name)"
+              class="btn btn-outline-dark w-100"
+            >
+              Voir les détails <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
