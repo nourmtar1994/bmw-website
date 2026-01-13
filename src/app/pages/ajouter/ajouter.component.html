@@ -1,0 +1,227 @@
+<!-- Add Product Page -->
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">Ajouter un Nouveau Modèle</h2>
+        <p class="text-muted">Remplissez le formulaire pour ajouter un nouveau véhicule BMW</p>
+      </div>
+
+      <!-- Card Container -->
+      <div class="card shadow-lg">
+        <div class="card-body p-4">
+
+          <!-- Success/Error Alert -->
+          @if (showMessage) {
+            <div 
+              class="alert alert-dismissible fade show" 
+              [class.alert-success]="messageType === 'success'"
+              [class.alert-danger]="messageType === 'error'"
+              role="alert">
+              @if (messageType === 'success') {
+                <i class="bi bi-check-circle-fill me-2"></i>
+              } @else {
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              }
+              {{ message }}
+              <button type="button" class="btn-close" (click)="showMessage = false"></button>
+            </div>
+          }
+
+          <!-- Product Form -->
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            
+            <div class="row">
+              
+              <!-- Model Name -->
+              <div class="col-md-6 mb-3">
+                <label for="modele" class="form-label">Modèle <span class="text-danger">*</span></label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="modele" 
+                  formControlName="modele"
+                  placeholder="BMW i4 eDrive40"
+                  [class.is-invalid]="modele?.invalid && modele?.touched">
+                @if (modele?.invalid && modele?.touched) {
+                  <div class="invalid-feedback">
+                    @if (modele?.errors?.['required']) {
+                      Le modèle est obligatoire
+                    }
+                    @if (modele?.errors?.['minlength']) {
+                      Le modèle doit contenir au moins 3 caractères
+                    }
+                  </div>
+                }
+              </div>
+
+              <!-- Power -->
+              <div class="col-md-6 mb-3">
+                <label for="puissance" class="form-label">Puissance <span class="text-danger">*</span></label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="puissance" 
+                  formControlName="puissance"
+                  placeholder="340 ch"
+                  [class.is-invalid]="puissance?.invalid && puissance?.touched">
+                @if (puissance?.invalid && puissance?.touched) {
+                  <div class="invalid-feedback">
+                    La puissance est obligatoire
+                  </div>
+                }
+              </div>
+
+              <!-- Transmission -->
+              <div class="col-md-6 mb-3">
+                <label for="boite" class="form-label">Boîte de vitesses <span class="text-danger">*</span></label>
+                <select 
+                  class="form-select" 
+                  id="boite" 
+                  formControlName="boite"
+                  [class.is-invalid]="boite?.invalid && boite?.touched">
+                  @for (b of boites; track b) {
+                    <option [value]="b">{{ b }}</option>
+                  }
+                </select>
+              </div>
+
+              <!-- Gamme -->
+              <div class="col-md-6 mb-3">
+                <label for="gamme" class="form-label">Gamme <span class="text-danger">*</span></label>
+                <select 
+                  class="form-select" 
+                  id="gamme" 
+                  formControlName="gamme"
+                  [class.is-invalid]="gamme?.invalid && gamme?.touched">
+                  @for (g of gammes; track g) {
+                    <option [value]="g">{{ g }}</option>
+                  }
+                </select>
+              </div>
+
+              <!-- Price -->
+              <div class="col-md-6 mb-3">
+                <label for="prix" class="form-label">Prix (€) <span class="text-danger">*</span></label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="prix" 
+                  formControlName="prix"
+                  placeholder="45000"
+                  [class.is-invalid]="prix?.invalid && prix?.touched">
+                @if (prix?.invalid && prix?.touched) {
+                  <div class="invalid-feedback">
+                    @if (prix?.errors?.['required']) {
+                      Le prix est obligatoire
+                    }
+                    @if (prix?.errors?.['min']) {
+                      Le prix doit être supérieur à 0
+                    }
+                  </div>
+                }
+              </div>
+
+              <!-- New Price (Optional) -->
+              <div class="col-md-6 mb-3">
+                <label for="nprix" class="form-label">Nouveau Prix (€) <small class="text-muted">(optionnel)</small></label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="nprix" 
+                  formControlName="nprix"
+                  placeholder="42000"
+                  [class.is-invalid]="nprix?.invalid && nprix?.touched">
+                @if (nprix?.invalid && nprix?.touched) {
+                  <div class="invalid-feedback">
+                    Le nouveau prix doit être supérieur à 0
+                  </div>
+                }
+              </div>
+
+              <!-- Autonomy (Optional) -->
+              <div class="col-md-6 mb-3">
+                <label for="autonomie" class="form-label">Autonomie <small class="text-muted">(optionnel)</small></label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="autonomie" 
+                  formControlName="autonomie"
+                  placeholder="590 km">
+                <small class="form-text text-muted">Pour les véhicules électriques/hybrides</small>
+              </div>
+
+              <!-- Quantity -->
+              <div class="col-md-6 mb-3">
+                <label for="quantite" class="form-label">Quantité <span class="text-danger">*</span></label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  id="quantite" 
+                  formControlName="quantite"
+                  [class.is-invalid]="quantite?.invalid && quantite?.touched">
+                @if (quantite?.invalid && quantite?.touched) {
+                  <div class="invalid-feedback">
+                    @if (quantite?.errors?.['required']) {
+                      La quantité est obligatoire
+                    }
+                    @if (quantite?.errors?.['min']) {
+                      La quantité doit être 0 ou plus
+                    }
+                  </div>
+                }
+              </div>
+
+              <!-- Image URL -->
+              <div class="col-12 mb-3">
+                <label for="image" class="form-label">URL de l'image <span class="text-danger">*</span></label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="image" 
+                  formControlName="image"
+                  placeholder="https://example.com/image.jpg"
+                  [class.is-invalid]="image?.invalid && image?.touched">
+                @if (image?.invalid && image?.touched) {
+                  <div class="invalid-feedback">
+                    L'URL de l'image est obligatoire
+                  </div>
+                }
+              </div>
+
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex gap-3 mt-4">
+              <button 
+                type="submit" 
+                class="btn btn-primary flex-grow-1"
+                [disabled]="productForm.invalid || isLoading">
+                @if (isLoading) {
+                  <span class="spinner-border spinner-border-sm me-2"></span>
+                  Ajout en cours...
+                } @else {
+                  <i class="bi bi-plus-circle me-2"></i>
+                  Ajouter le produit
+                }
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-outline-secondary"
+                (click)="onCancel()"
+                [disabled]="isLoading">
+                <i class="bi bi-x-circle me-2"></i>
+                Annuler
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

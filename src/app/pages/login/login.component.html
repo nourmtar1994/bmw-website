@@ -1,0 +1,100 @@
+<!-- Login Page Container -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      
+      <!-- Login Card -->
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <h2 class="fw-bold">Connexion</h2>
+            <p class="text-muted">Connectez-vous à votre compte BMW</p>
+          </div>
+
+          <!-- Error Alert (shown only if login fails) -->
+          @if (loginError) {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              {{ errorMessage }}
+              <button type="button" class="btn-close" (click)="loginError = false"></button>
+            </div>
+          }
+
+          <!-- Login Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="email"
+                placeholder="Email"
+                [class.is-invalid]="email?.invalid && email?.touched">
+              
+              <!-- Email Validation Errors -->
+              @if (email?.invalid && email?.touched) {
+                <div class="invalid-feedback">
+                  @if (email?.errors?.['required']) {
+                    L'email est obligatoire
+                  }
+                  @if (email?.errors?.['email']) {
+                    Veuillez entrer un email valide
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                formControlName="password"
+                placeholder="••••••••"
+                [class.is-invalid]="password?.invalid && password?.touched">
+              
+              <!-- Password Validation Errors -->
+              @if (password?.invalid && password?.touched) {
+                <div class="invalid-feedback">
+                  Le mot de passe est obligatoire
+                </div>
+              }
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid mb-3">
+              <button 
+                type="submit" 
+                class="btn btn-primary btn-lg"
+                [disabled]="loginForm.invalid || isLoading">
+                @if (isLoading) {
+                  <span class="spinner-border spinner-border-sm me-2"></span>
+                  Connexion...
+                } @else {
+                  Se connecter
+                }
+              </button>
+            </div>
+
+            <!-- Register Link -->
+            <div class="text-center">
+              <p class="mb-0">
+                Pas encore de compte ? 
+                <a routerLink="/register" class="text-decoration-none fw-bold">S'inscrire</a>
+              </p>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

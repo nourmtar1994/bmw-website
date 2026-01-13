@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fullname": "Admin User",
+      "email": "admin@bmw.com",
+      "password": "Admin@123",
+      "profile": "admin"
+    },
+    {
+      "id": "2",
+      "fullname": "Jean Dupont",
+      "email": "jean.dupont@email.com",
+      "password": "Password@123",
+      "profile": "customer"
+    },
+    {
+      "id": "3",
+      "fullname": "Marie Martin",
+      "email": "marie.martin@email.com",
+      "password": "Secure@456",
+      "profile": "customer"
+    },
+    {
+      "id": "0d77",
+      "fullname": "Ahmed Matar",
+      "email": "nour_mtar@outlook.com",
+      "password": "12345aA!",
+      "profile": "customer"
+    },
+    {
+      "id": "1268",
+      "fullname": "Matar Ahmed",
+      "email": "ahmed@outlook.com",
+      "password": "12345aA!",
+      "profile": "customer"
+    }
+  ],
+  "produits": [
+    {
+      "id": "1",
+      "modele": "BMW i4 eDrive40",
+      "puissance": "340 ch",
+      "boite": "Automatique",
+      "prix": 59990,
+      "gamme": "Electrique",
+      "autonomie": "590 km",
+      "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop",
+      "quantite": 5
+    },
+    {
+      "id": "2",
+      "modele": "BMW iX xDrive50",
+      "puissance": "523 ch",
+      "boite": "Automatique",
+      "prix": 99990,
+      "nprix": 94990,
+      "gamme": "Electrique",
+      "autonomie": "630 km",
+      "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&auto=format&fit=crop",
+      "quantite": 3
+    },
+    {
+      "id": "3",
+      "modele": "BMW M3 Competition",
+      "puissance": "510 ch",
+      "boite": "Automatique",
+      "prix": 89990,
+      "gamme": "Essence",
+      "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&auto=format&fit=crop",
+      "quantite": 2
+    },
+    {
+      "id": "4",
+      "modele": "BMW M5 Competition",
+      "puissance": "625 ch",
+      "boite": "Automatique",
+      "prix": 129990,
+      "gamme": "Essence",
+      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&auto=format&fit=crop",
+      "quantite": 1
+    },
+    {
+      "id": "5",
+      "modele": "BMW 330e",
+      "puissance": "292 ch",
+      "boite": "Automatique",
+      "prix": 52990,
+      "gamme": "Hybride",
+      "autonomie": "60 km",
+      "image": "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&auto=format&fit=crop",
+      "quantite": 7
+    },
+    {
+      "id": "6",
+      "modele": "BMW X5 xDrive45e",
+      "puissance": "394 ch",
+      "boite": "Automatique",
+      "prix": 79990,
+      "nprix": 74990,
+      "gamme": "Hybride",
+      "autonomie": "87 km",
+      "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&auto=format&fit=crop",
+      "quantite": 4
+    },
+    {
+      "id": "7",
+      "modele": "BMW 320d",
+      "puissance": "190 ch",
+      "boite": "Automatique",
+      "prix": 44990,
+      "gamme": "Diesel",
+      "image": "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&auto=format&fit=crop",
+      "quantite": 6
+    },
+    {
+      "id": "8",
+      "modele": "BMW X3 xDrive20d",
+      "puissance": "190 ch",
+      "boite": "Automatique",
+      "prix": 54990,
+      "gamme": "Diesel",
+      "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&auto=format&fit=crop",
+      "quantite": 5
+    },
+    {
+      "id": "9",
+      "modele": "BMW i7 xDrive60",
+      "puissance": "544 ch",
+      "boite": "Automatique",
+      "prix": 139990,
+      "gamme": "Electrique",
+      "autonomie": "625 km",
+      "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop",
+      "quantite": 2
+    },
+    {
+      "id": "10",
+      "modele": "BMW M4 Competition",
+      "puissance": "510 ch",
+      "boite": "Automatique",
+      "prix": 94990,
+      "gamme": "Essence",
+      "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&auto=format&fit=crop",
+      "quantite": 3
+    },
+    {
+      "id": 1768329873849,
+      "modele": "BMW X1",
+      "puissance": "150CH",
+      "boite": "Automatique",
+      "prix": 54000,
+      "nprix": 50000,
+      "gamme": "Electrique",
+      "autonomie": "500",
+      "image": "https://catalogue.automobile.tn/big/2023/02/46889.png?t=1",
+      "quantite": 20
+    }
+  ]
+}

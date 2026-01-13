@@ -1,0 +1,146 @@
+<!-- Product Listing Page -->
+<div class="container mt-5 mb-5">
+  
+  <!-- Page Header -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Nos Modèles BMW</h1>
+    <p class="lead text-muted">Découvrez notre gamme complète de véhicules</p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="filter-section mb-4">
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      @for (gamme of gammes; track gamme) {
+        <button 
+          class="btn filter-btn"
+          [class.active]="selectedGamme === gamme"
+          (click)="filterByGamme(gamme)">
+          {{ gamme }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  @if (isLoading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+      <p class="mt-3 text-muted">Chargement des produits...</p>
+    </div>
+  }
+
+  <!-- Error Message -->
+  @if (hasError) {
+    <div class="alert alert-danger text-center" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+      {{ errorMessage }}
+      <button class="btn btn-sm btn-outline-danger ms-3" (click)="loadProduits()">
+        Réessayer
+      </button>
+    </div>
+  }
+
+  <!-- Products Grid -->
+  @if (!isLoading && !hasError) {
+    @if (filteredProduits.length === 0) {
+      <!-- No Products Found -->
+      <div class="text-center py-5">
+        <i class="bi bi-inbox display-1 text-muted"></i>
+        <p class="mt-3 text-muted">Aucun produit trouvé pour cette catégorie</p>
+      </div>
+    } @else {
+      <!-- Products Cards -->
+      <div class="row g-4">
+        @for (produit of filteredProduits; track produit.id) {
+          <div class="col-md-6 col-lg-4">
+            <div class="card product-card h-100 shadow-sm">
+              
+              <!-- Product Image -->
+              <div class="card-img-wrapper">
+                <img 
+                  [src]="produit.image" 
+                  [alt]="produit.modele" 
+                  class="card-img-top"
+                  onerror="this.src='https://via.placeholder.com/400x250?text=BMW'">
+                
+                <!-- Gamme Badge -->
+                <span class="badge gamme-badge" [class]="'badge-' + produit.gamme.toLowerCase()">
+                  {{ produit.gamme }}
+                </span>
+              </div>
+
+              <!-- Product Details -->
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">{{ produit.modele }}</h5>
+                
+                <!-- Specifications -->
+                <div class="specs mb-3">
+                  <div class="spec-item">
+                    <i class="bi bi-speedometer2 me-2"></i>
+                    <span>{{ produit.puissance }}</span>
+                  </div>
+                  <div class="spec-item">
+                    <i class="bi bi-gear me-2"></i>
+                    <span>{{ produit.boite }}</span>
+                  </div>
+                  @if (produit.autonomie) {
+                    <div class="spec-item">
+                      <i class="bi bi-battery-charging me-2"></i>
+                      <span>{{ produit.autonomie }}</span>
+                    </div>
+                  }
+                </div>
+
+                <!-- Stock Info -->
+                <div class="stock-info mb-3">
+                  @if (produit.quantite > 0) {
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i>
+                      En stock ({{ produit.quantite }})
+                    </span>
+                  } @else {
+                    <span class="badge bg-danger">
+                      <i class="bi bi-x-circle me-1"></i>
+                      Rupture de stock
+                    </span>
+                  }
+                </div>
+
+                <!-- Price -->
+                <div class="mt-auto">
+                  @if (produit.nprix) {
+                    <!-- Promotional Price -->
+                    <div class="price-section">
+                      <span class="old-price text-decoration-line-through text-muted">
+                        {{ formatPrice(produit.prix) }}
+                      </span>
+                      <span class="new-price text-danger fw-bold fs-4 ms-2">
+                        {{ formatPrice(produit.nprix) }}
+                      </span>
+                    </div>
+                  } @else {
+                    <!-- Regular Price -->
+                    <div class="price-section">
+                      <span class="price fw-bold fs-4">
+                        {{ formatPrice(produit.prix) }}
+                      </span>
+                    </div>
+                  }
+                </div>
+
+                <!-- Action Button -->
+                <button class="btn btn-primary w-100 mt-3">
+                  <i class="bi bi-info-circle me-2"></i>
+                  Voir les détails
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+
+</div>

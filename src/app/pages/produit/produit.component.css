@@ -1,0 +1,143 @@
+/* Product Listing Page Styles */
+
+.filter-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 25px;
+  border: 2px solid #dee2e6;
+  background: white;
+  color: #495057;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: #1c69d4;
+  color: #1c69d4;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: #1c69d4;
+  border-color: #1c69d4;
+  color: white;
+}
+
+.product-card {
+  border: none;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.gamme-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.badge-electrique {
+  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  color: white;
+}
+
+.badge-essence {
+  background: linear-gradient(135deg, #ff6b6b, #ff4757);
+  color: white;
+}
+
+.badge-hybride {
+  background: linear-gradient(135deg, #26de81, #20bf6b);
+  color: white;
+}
+
+.badge-diesel {
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  color: white;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.spec-item i {
+  color: #1c69d4;
+}
+
+.stock-info {
+  display: flex;
+  gap: 8px;
+}
+
+.price-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.old-price {
+  font-size: 1rem;
+}
+
+.new-price {
+  font-size: 1.5rem !important;
+}
+
+.price {
+  color: #1c69d4;
+}
+
+.btn-primary {
+  background-color: #1c69d4;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1557b0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(28, 105, 212, 0.3);
+}
